@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0e230905ca90b34895ed3f016d23e63, type: 3}
+  m_Name: Quest 7
+  m_EditorClassIdentifier: 
+  id: 7
+  questName: Cook's Assistant
+  description: The cook in Lumbridge was pretty easy to help, but now your cooking
+    is on a whole new level and with that skill comes cooks of higher renown asking
+    for help. Maybe it'll be easy? Guess that depends on how good you are in the
+    kitchen.
+  questSteps:
+  - dialogues:
+    - Hello, are you going to help me?
+    - Have a great day.
+    - Great! Thank you so much
+    - go get me some eggs!
+  - dialogues:
+    - Omg that was so fast!
+    - Thank you! now go get me some flour
+    - Hurry!
+  - dialogues:
+    - Thank you so much!
+    - Here some gold!
+  reward: 50
+  _reqiredQuestCompletion: 020000000300000007000000
