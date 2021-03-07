@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: e01eabcee5b439a4db62c3215b8fc908
+guid: 620321322af4c4a4188d9172c953a01e
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Hard Landing
+    second: Rifle Aiming Idle
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,21 +35,21 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Hard Landing
+      name: Rifle Aiming Idle
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 75
+      lastFrame: 93
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 1
-      loopBlendPositionY: 0
+      loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
