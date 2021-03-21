@@ -8,10 +8,20 @@ public class PlayerController : MonoBehaviour
   #region Variables
   //[SerializeField]
   //private float _speed = 2f;
+  [Header("Player Transforms")]
+  [Space]
   public Transform hand;
   public Transform weapon;
   public Transform hip;
+  public Transform spine;
   private float _jumpDirection;
+  [Header("Player Sensitivities")]
+  [SerializeField]
+  float xSensitivity = 5f;
+  [SerializeField]
+  float ySensitivity = 5f;
+  [Header("Player Properties")]
+  [Space]
   [SerializeField]
   private float _maxFwdSpeed = 8f;
   [SerializeField]
@@ -40,6 +50,9 @@ public class PlayerController : MonoBehaviour
     get { return !Mathf.Approximately(moveDirection.sqrMagnitude, 0f); }
   }
   Vector2 moveDirection;
+  Vector2 _lookDirection;
+
+  Vector2 _lastLookDirection;
   #endregion
 
   #region Builtin Methods
@@ -50,12 +63,22 @@ public class PlayerController : MonoBehaviour
     if (_animator == null)
     {
       Debug.LogError("No Animator Component attached to Parent Game Object!!!");
-
     }
 
     _rb = GetComponent<Rigidbody>();
     if (_rb == null)
       Debug.LogError("No Rigidbody attached to Parent Game Object!!!");
+  }
+
+
+  void LateUpdate()
+  {
+    _lastLookDirection += new Vector2(-_lookDirection.y * ySensitivity, _lookDirection.x * xSensitivity);
+    _lastLookDirection.x = Mathf.Clamp(_lastLookDirection.x, -20, 90);
+    _lastLookDirection.y = Mathf.Clamp(_lastLookDirection.y, -45, 45);
+
+    spine.eulerAngles = _lastLookDirection;
+
   }
 
   // Update is called once per frame
@@ -99,9 +122,13 @@ public class PlayerController : MonoBehaviour
   public void PutDownGun()
   {
     weapon.SetParent(hip);
-    weapon.localPosition = new Vector3(0.091f, 0.0262f, -0.0691f);
+    weapon.localPosition = new Vector3(0.0734f, 0.0257f, -0.064f);
     weapon.localRotation = Quaternion.Euler(-1.6f, 104.3f, 101.3f);
     weapon.localScale = new Vector3(1, 1, 1);
+  }
+  public void OnLook(InputAction.CallbackContext context)
+  {
+    _lookDirection = context.ReadValue<Vector2>();
   }
   public void OnMove(InputAction.CallbackContext context)
   {
@@ -155,7 +182,6 @@ public class PlayerController : MonoBehaviour
       _animator.SetBool("ReadyJump", true);
       readyJump = true;
       _jumpEffort += Time.deltaTime;
-      Debug.Log(_jumpEffort);
     }
     else if (readyJump)
     {
